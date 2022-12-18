@@ -1,5 +1,3 @@
---local clothing1 = vector3(1693.66, 4822.39, 40.07)
-
 Citizen.CreateThread(function()
     local ped = GetPlayerPed(-1)
     while true do
