@@ -10,3 +10,9 @@ Citizen.CreateThread(function()
         end
     end
 end)
+
+RegisterCommand('set-floormarker', function (source)
+    local ped = GetPlayerPed(-1)
+    local playerCoords = GetEntityCoords(ped)
+    print(playerCoords)
+end)
