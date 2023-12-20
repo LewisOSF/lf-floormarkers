@@ -1,12 +1,3 @@
-local locations = {}  -- Declare a local variable to store locations
-
-RegisterNetEvent('updateLocations')  -- Declare a network event for updating locations
-
--- Listen for the 'updateLocations' event and update the local variable
-AddEventHandler('updateLocations', function(newLocations)
-    locations = newLocations
-end)
-
 Citizen.CreateThread(function()
     local ped = GetPlayerPed(-1)
     while true do
