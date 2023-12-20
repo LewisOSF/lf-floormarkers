@@ -7,5 +7,3 @@ server_script 'server.lua'
 files {
     'locations.lua'
 }
-
-client_script 'locations.lua'

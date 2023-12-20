@@ -1,4 +1,5 @@
--- server-side Lua script
+local locations = require('locations')  -- Load locations from the file
+
 RegisterCommand("set-floormarker", function(source, args, rawCommand)
     local playerPed = GetPlayerPed(-1)
     local playerCoords = GetEntityCoords(playerPed)
@@ -6,7 +7,7 @@ RegisterCommand("set-floormarker", function(source, args, rawCommand)
     -- Create a new object with the player's coordinates
     local newLocation = {
         pos = {x = playerCoords.x, y = playerCoords.y, z = playerCoords.z},
-        marker = 27, -- You can set the marker type as needed
+        marker = 27,
         scale = 0.5,
         rgba = {0, 128, 255, 50}
     }
@@ -16,6 +17,9 @@ RegisterCommand("set-floormarker", function(source, args, rawCommand)
 
     -- Save the updated locations table (optional, depending on your needs)
     SaveLocationsToFile()
+
+    -- Trigger the 'updateLocations' event to inform clients about the changes
+    TriggerClientEvent('updateLocations', -1, locations)
 
     -- Output the coordinates to the chat
     local message = string.format("Floor marker set at X: %.2f, Y: %.2f, Z: %.2f", playerCoords.x, playerCoords.y, playerCoords.z)
